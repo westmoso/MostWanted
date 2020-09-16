@@ -13,9 +13,8 @@ function app(people) {
       searchResults = searchByName(people);
       break;
     case "no":
-      //searchType = promptFor("What are their traits?");
+      searchType = promptFor("What are their list of traits?", traitValidation).toLowerCase();;
       // TODO: search by traits
-      imChia = promptFor("is his name chia?", isMyNameChia).toLowerCase();
       break;
     default:
       app(people); // restart app
@@ -49,6 +48,7 @@ function mainMenu(person, people) {
       // TODO: get person's info
       break;
     case "family":
+      displayFamilyName(people);
       // TODO: get person's family
       break;
     case "descendants":
@@ -63,6 +63,20 @@ function mainMenu(person, people) {
       return mainMenu(person, people); // ask again
   }
 }
+
+// function searchByFamilyName(people) {
+//   let lastName = promptFor("What is the person's family name?", chars);
+
+//   let foundFamilyName = people.filter(function (person) {
+//     if (person.lastName === lastName) {
+//       return true;
+//     }
+//     else {
+//       return false;
+//     }
+//   })
+//   return foundFamilyName;
+// }
 
 function searchByName(people) {
   let firstName = promptFor("What is the person's first name?", chars);
@@ -85,8 +99,7 @@ function displayPeople(people) {
     people
       .map(function (person) {
         return person.firstName + " " + person.lastName;
-      })
-      .join("\n")
+      }).join("\n")
   );
 }
 
@@ -106,6 +119,13 @@ function displayPerson(person) {
   alert(personInfo);
 }
 
+function displayFamilyName(people) {
+
+  let personFamilyName = "Last Name: " + people.lastName;
+
+  alert(personFamilyName);
+}
+
 // function that prompts and validates user input
 function promptFor(question, valid) {
   do {
@@ -119,6 +139,7 @@ function yesNo(input) {
   return input.toLowerCase() == "yes" || input.toLowerCase() == "no";
 }
 
+// trait validation function
 function traitValidation(input) {
   return input.toLowerCase() == "eye color";
 }
