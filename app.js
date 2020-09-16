@@ -13,7 +13,8 @@ function app(people) {
       searchResults = searchByName(people);
       break;
     case "no":
-      searchType = promptFor("What are their list of traits?", traitValidation).toLowerCase();;
+      searchType = promptFor("Let's narrow the person you are looking for by their traits: 'eye color', 'height', 'weight',...", traitValidation).toLowerCase();;
+      searchResults = searchByTrait(people);
       // TODO: search by traits
       break;
     default:
@@ -64,20 +65,6 @@ function mainMenu(person, people) {
   }
 }
 
-// function searchByFamilyName(people) {
-//   let lastName = promptFor("What is the person's family name?", chars);
-
-//   let foundFamilyName = people.filter(function (person) {
-//     if (person.lastName === lastName) {
-//       return true;
-//     }
-//     else {
-//       return false;
-//     }
-//   })
-//   return foundFamilyName;
-// }
-
 function searchByName(people) {
   let firstName = promptFor("What is the person's first name?", chars);
   let lastName = promptFor("What is the person's last name?", chars);
@@ -93,13 +80,43 @@ function searchByName(people) {
   return foundPerson;
 }
 
+// function searchByTrait(people) {
+//   let findingTraits = prompt("Their traits?", chars);
+
+//   let foundTrait = people.filter(function (person) {
+//     if (person.findingTraits === findingTraits) {
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   })
+// }
+
+// return foundTrait;
+
+
+// function searchByID(people) {
+//   let allInfo = "person.firstName" + "person.lastName" + "person.gender" + "person.dob" + "person.height" + "person.weight" +
+//     "person.eyeColor" + "person.occupation" + "person.parents" + "person.currentSpouse";
+//   let foundInfo = people.filter(function (person) {
+//     if (person.id === firstName && person.lastName === lastName) {
+//       return true;
+//       console.log(allInfo);
+//     }
+//     else {
+//       return false;
+//     }
+//   })
+//   // TODO: find the ID of the person using the name they entered and return all info
+//   return allInfo;
+// }
+
 // alerts a list of people
 function displayPeople(people) {
   alert(
-    people
-      .map(function (person) {
-        return person.firstName + " " + person.lastName;
-      }).join("\n")
+    people.map(function (person) {
+      return person.firstName + " " + person.lastName;
+    }).join("\n")
   );
 }
 
@@ -119,9 +136,11 @@ function displayPerson(person) {
   alert(personInfo);
 }
 
+
+
 function displayFamilyName(people) {
 
-  let personFamilyName = "Last Name: " + people.lastName;
+  let personFamilyName = "Last Name: " + person.lastName;
 
   alert(personFamilyName);
 }
@@ -141,7 +160,7 @@ function yesNo(input) {
 
 // trait validation function
 function traitValidation(input) {
-  return input.toLowerCase() == "eye color";
+  return input.toLowerCase() == "blue";
 }
 
 // helper function to pass in as default promptFor validation
