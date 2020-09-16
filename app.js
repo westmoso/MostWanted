@@ -20,7 +20,7 @@ function app(people){
   }
   
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
-  mainMenu(searchResults, people);
+  mainMenu(searchResults[0], people);
 }
 
 // Menu function to call once you find who you are looking for
@@ -37,7 +37,7 @@ function mainMenu(person, people){
 
   switch(displayOption){
     case "info":
-    // TODO: get person's info
+    console.log(person.id)// TODO: get person's info
     break;
     case "family":
     // TODO: get person's family
@@ -70,6 +70,22 @@ function searchByName(people){
   // TODO: find the person using the name they entered
   return foundPerson;
 }
+
+// function searchByID(people){
+//   let allInfo = "person.firstName" + "person.lastName" + "person.gender" + "person.dob" + "person.height" + "person.weight" + 
+//   "person.eyeColor" + "person.occupation" + 	"person.parents" + "person.currentSpouse";
+//     let foundInfo= people.filter(function(person){
+//     if(person.id === firstName && person.lastName === lastName){
+//       return true;
+//       console.log(allInfo);
+//     }
+//     else{
+//       return false;
+//     }
+//   })
+//   // TODO: find the ID of the person using the name they entered and return all info
+//   return allInfo;
+// }
 
 // alerts a list of people
 function displayPeople(people){
