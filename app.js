@@ -13,8 +13,8 @@ function app(people) {
       searchResults = searchByName(people);
       break;
     case "no":
-      searchType = promptFor("Let's narrow the person you are looking for by their traits: 'eye color', 'height', 'weight', 'gender', 'occupation', 'dob'", typeValidation).toLowerCase();
-      searchResults = searchByTrait(people, searchType);
+      searchType = promptFor("Let's narrow the person you are looking for by their traits: 'eye color', 'height', 'weight', 'gender', 'occupation', 'dob', 'zodiac'", typeValidation).toLowerCase();
+      searchResults = searchByTrait(people, searchType); //want to enter multiple traits at this point
       // TODO: search by traits
       break;
     default:
@@ -106,14 +106,27 @@ function searchForTrait(people, traitType, searchTrait) {
 function searchByTrait(people, searchType) {
   let searchTrait = promptFor("What is the " + searchType + " you are looking for? ", chars).toLowerCase();
   let traitResult;
-  switch (searchType) {
+   switch (searchType) {
     case "eye color":
-      traitResult = searchForTrait(people, "eyeColor", searchTrait);
+      traitResult = searchForTrait(people, "eyecolor", searchTrait);
       break;
-
+    case "height":
+      traitResult = searchForTrait(people, "height", searchTrait);
+      break;
     case "weight":
-      searchForTrait(people, "weight", searchTrait);
+      traitResult = searchForTrait(people, "weight", searchTrait);
       break;
+    case "occupation":
+      traitResult = searchForTrait(people, "occupation", searchTrait);
+      break;
+    case "gender":
+      traitResult = searchForTrait(people, "gender", searchTrait);
+      break;
+    case "zodiac":
+      traitResult = searchForTrait(people, "zodiac", searchTrait);
+        break;
+
+      
   }
   return traitResult;
   // searchForTrait(people, searchType, searchTrait)
@@ -142,6 +155,7 @@ function displayPerson(person) {
   personInfo += "Occupation:" + person.occupation + "\n";
   personInfo += "Parents:" + person.parents + "\n";
   personInfo += "Spouse:" + person.currentSpouse + "\n";
+  personInfo += "Zodiac:" + person.zodiac + "\n";
 
   alert(personInfo);
 }
@@ -170,7 +184,7 @@ function yesNo(input) {
 
 // trait validation function
 function typeValidation(input) {
-  return input.toLowerCase() == "eye color" || input.toLowerCase() === "height" || input.toLowerCase() == "weight" || input.toLowerCase() === "dob" || input.toLowerCase() === "occupation" || input.toLowerCase() === 'gender';
+  return input.toLowerCase() == "eye color" || input.toLowerCase() === "height" || input.toLowerCase() == "weight" || input.toLowerCase() === "dob" || input.toLowerCase() === "occupation" || input.toLowerCase() === 'gender'  || input.toLowerCase() === 'zodiac';
 }
 
 // helper function to pass in as default promptFor validation
