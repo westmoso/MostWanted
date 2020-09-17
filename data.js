@@ -324,9 +324,9 @@ const data = [
 // });
 // console.log(foundEyeColorGreen);
 
-let foundLastNameBob = data.filter(function (people) {
-  if (people.lastName === "Bob") {
-    return true;
-  }
-});
-console.log(foundLastNameBob);
+// let foundLastNameBob = data.filter(function (people) {
+//   if (people.lastName === "Bob") {
+//     return true;
+//   }
+// });
+// console.log(foundLastNameBob);

@@ -13,7 +13,7 @@ function app(people) {
       searchResults = searchByName(people);
       break;
     case "no":
-      searchType = promptFor("Let's narrow the person you are looking for by their traits: 'eye color', 'height', 'weight',...", typeValidation).toLowerCase();
+      searchType = promptFor("Let's narrow the person you are looking for by their traits: 'eye color', 'height', 'weight', 'gender', 'occupation', 'dob'", typeValidation).toLowerCase();
       searchResults = searchByTrait(people, searchType);
       // TODO: search by traits
       break;
@@ -24,8 +24,6 @@ function app(people) {
 
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
   mainMenu(searchResults[0], people);
-
-  mainEyeColor(searchResults.eyeColor);
 }
 
 // Menu function to call once you find who you are looking for
@@ -82,28 +80,39 @@ function searchByName(people) {
   return foundPerson;
 }
 
-function searchByTrait(people, searchType) {
-  let searchTrait = promptFor("What is the " + searchType + " you are looking for? ", chars).toLowerCase();
-  // let findingTraits = prompt("Their traits?", chars);
-  // TODO: Once you find a person, you need to add them to a list. 
-  let foundTrait = people.filter(function (person) {
-    let personTrait;
-    switch (searchType) {
-      case "eye color":
-        personTrait = person.eyeColor;
-        break;
+function searchForTrait(people, traitType, searchTrait) {
 
-      case "height":
-        personTrait = person.height;
-
-    }
-
-    if (personTrait === searchTrait) {
+  let searchResults = people.filter(function (el) {
+    if (el[traitType] == searchTrait) {
       return true;
-    } else {
+    }
+    else {
       return false;
     }
-  }); return foundTrait;
+  });
+  return searchResults;
+}
+
+function searchByTrait(people, searchType) {
+  let searchTrait = promptFor("What is the " + searchType + " you are looking for? ", chars).toLowerCase();
+
+  switch (searchType) {
+    case "eye color":
+      searchForTrait(people, "eyeColor", searchTrait);
+      break;
+
+    case "weight":
+      searchForTrait(people, "weight", searchTrait);
+      break;
+  }
+
+  // searchForTrait(people, searchType, searchTrait)
+
+  // if (personTrait === searchTrait) {
+  //   return true;
+  // } else {
+  //   return false;
+  // }
 }
 
 
@@ -157,7 +166,7 @@ function yesNo(input) {
 
 // trait validation function
 function typeValidation(input) {
-  return input.toLowerCase() == "eye color" || input.toLowerCase() === "height" || input.toLowerCase() == "weight";
+  return input.toLowerCase() == "eye color" || input.toLowerCase() === "height" || input.toLowerCase() == "weight" || input.toLowerCase() === "dob" || input.toLowerCase() === "occupation" || input.toLowerCase() === 'gender';
 }
 
 // helper function to pass in as default promptFor validation
