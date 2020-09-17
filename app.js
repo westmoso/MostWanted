@@ -13,8 +13,8 @@ function app(people) {
       searchResults = searchByName(people);
       break;
     case "no":
-      searchType = promptFor("Let's narrow the person you are looking for by their traits: 'eye color', 'height', 'weight',...", traitValidation).toLowerCase();;
-      searchResults = searchByTrait(people);
+      searchType = promptFor("Let's narrow the person you are looking for by their traits: 'eye color', 'height', 'weight',...", typeValidation).toLowerCase();
+      searchResults = searchByTrait(people, searchType);
       // TODO: search by traits
       break;
     default:
@@ -24,6 +24,8 @@ function app(people) {
 
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
   mainMenu(searchResults[0], people);
+
+  mainEyeColor(searchResults.eyeColor);
 }
 
 // Menu function to call once you find who you are looking for
@@ -80,19 +82,31 @@ function searchByName(people) {
   return foundPerson;
 }
 
-// function searchByTrait(people) {
-//   let findingTraits = prompt("Their traits?", chars);
+function searchByTrait(people, searchType) {
+  let searchTrait = promptFor("What is the " + searchType + " you are looking for? ", chars).toLowerCase();
+  // let findingTraits = prompt("Their traits?", chars);
+  // TODO: Once you find a person, you need to add them to a list. 
+  let foundTrait = people.filter(function (person) {
+    let personTrait;
+    switch (searchType) {
+      case "eye color":
+        personTrait = person.eyeColor;
+        break;
 
-//   let foundTrait = people.filter(function (person) {
-//     if (person.findingTraits === findingTraits) {
-//       return true;
-//     } else {
-//       return false;
-//     }
-//   })
-// }
+      case "height":
+        personTrait = person.height;
 
-// return foundTrait;
+    }
+
+    if (personTrait === searchTrait) {
+      return true;
+    } else {
+      return false;
+    }
+  }); return foundTrait;
+}
+
+
 
 // alerts a list of people
 function displayPeople(people) {
@@ -142,8 +156,8 @@ function yesNo(input) {
 }
 
 // trait validation function
-function traitValidation(input) {
-  return input.toLowerCase() == "blue";
+function typeValidation(input) {
+  return input.toLowerCase() == "eye color" || input.toLowerCase() === "height" || input.toLowerCase() == "weight";
 }
 
 // helper function to pass in as default promptFor validation
