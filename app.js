@@ -23,7 +23,17 @@ function app(people) {
   }
 
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
-  mainMenu(searchResults[0], people);
+  if (searchResults.length >= 1) {
+    //TODO: Loop through searchResults array and call main menu.
+    //For (index, condition, increment)
+    for (let i = 0; i < searchResults.length; i++) {
+      mainMenu(searchResults[i], people);
+    }
+  } else {
+    alert("STOP BREAKING MY CODE.");
+    app(people);
+  }
+
 }
 
 // Menu function to call once you find who you are looking for
@@ -95,24 +105,18 @@ function searchForTrait(people, traitType, searchTrait) {
 
 function searchByTrait(people, searchType) {
   let searchTrait = promptFor("What is the " + searchType + " you are looking for? ", chars).toLowerCase();
-
+  let traitResult;
   switch (searchType) {
     case "eye color":
-      searchForTrait(people, "eyeColor", searchTrait);
+      traitResult = searchForTrait(people, "eyeColor", searchTrait);
       break;
 
     case "weight":
       searchForTrait(people, "weight", searchTrait);
       break;
   }
-
+  return traitResult;
   // searchForTrait(people, searchType, searchTrait)
-
-  // if (personTrait === searchTrait) {
-  //   return true;
-  // } else {
-  //   return false;
-  // }
 }
 
 
