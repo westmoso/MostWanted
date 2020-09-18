@@ -12,8 +12,7 @@ function app(people) {
     case "yes":
       searchResults = searchByName(people);
       break;
-    case "no":
-      searchType = promptFor("Let's narrow the person you are looking for by their traits: 'eye color', 'height', 'weight', 'gender', 'occupation', 'dob', 'zodiac'", typeValidation).toLowerCase();
+    case "no": searchingForTrait();
       searchResults = searchByTrait(people, searchType); //want to enter multiple traits at this point
       // TODO: search by traits
       break;
@@ -30,9 +29,14 @@ function app(people) {
       mainMenu(searchResults[i], people);
     }
   } else {
-    alert("STOP BREAKING MY CODE.");
+    alert("Can't find person. Restart application.");
     app(people);
   }
+
+}
+
+function searchingForTrait() {
+
 
 }
 
@@ -105,29 +109,34 @@ function searchForTrait(people, traitType, searchTrait) {
 
 function searchByTrait(people, searchType) {
   let traitResult = people;
+  let i = 1
+  // loop
 
-// loop
-  let searchTrait = promptFor("What is the " + searchType + " you are looking for? ", chars).toLowerCase();
-  
-   switch (searchType) {
-    case "eye color":
-      traitResult = searchForTrait(traitResult, "eyecolor", searchTrait);
-      break;
-    case "height":
-      traitResult = searchForTrait(people, "height", searchTrait);
-      break;
-    case "weight":
-      traitResult = searchForTrait(people, "weight", searchTrait);
-      break;
-    case "occupation":
-      traitResult = searchForTrait(people, "occupation", searchTrait);
-      break;
-    case "gender":
-      traitResult = searchForTrait(traitResult, "gender", searchTrait);
-      break;
-    case "zodiac":
-      traitResult = searchForTrait(people, "zodiac", searchTrait);
-        break;  
+  while (i < traitResult.length) {
+    i++;
+    let searchType = promptFor("Let's narrow the person you are looking for by their traits: 'eye color', 'height', 'weight', 'gender', 'occupation', 'dob', 'zodiac'", typeValidation).toLowerCase();
+    let searchTrait = promptFor("What is the " + searchType + " you are looking for? ", chars).toLowerCase();
+
+    switch (searchType) {
+      case "eye color":
+        traitResult = searchForTrait(traitResult, "eyeColor", searchTrait);
+        break;
+      case "height":
+        traitResult = searchForTrait(traitResult, "height", searchTrait);
+        break;
+      case "weight":
+        traitResult = searchForTrait(traitResult, "weight", searchTrait);
+        break;
+      case "occupation":
+        traitResult = searchForTrait(traitResult, "occupation", searchTrait);
+        break;
+      case "gender":
+        traitResult = searchForTrait(traitResult, "gender", searchTrait);
+        break;
+      case "zodiac":
+        traitResult = searchForTrait(traitResult, "zodiac", searchTrait);
+        break;
+    }
   }
   //
   return traitResult;
@@ -186,7 +195,7 @@ function yesNo(input) {
 
 // trait validation function
 function typeValidation(input) {
-  return input.toLowerCase() == "eye color" || input.toLowerCase() === "height" || input.toLowerCase() == "weight" || input.toLowerCase() === "dob" || input.toLowerCase() === "occupation" || input.toLowerCase() === 'gender'  || input.toLowerCase() === 'zodiac';
+  return input.toLowerCase() == "eye color" || input.toLowerCase() === "height" || input.toLowerCase() == "weight" || input.toLowerCase() === "dob" || input.toLowerCase() === "occupation" || input.toLowerCase() === 'gender' || input.toLowerCase() === 'zodiac';
 }
 
 // helper function to pass in as default promptFor validation
