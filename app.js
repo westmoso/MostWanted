@@ -104,11 +104,14 @@ function searchForTrait(people, traitType, searchTrait) {
 }
 
 function searchByTrait(people, searchType) {
+  let traitResult = people;
+
+// loop
   let searchTrait = promptFor("What is the " + searchType + " you are looking for? ", chars).toLowerCase();
-  let traitResult;
+  
    switch (searchType) {
     case "eye color":
-      traitResult = searchForTrait(people, "eyecolor", searchTrait);
+      traitResult = searchForTrait(traitResult, "eyecolor", searchTrait);
       break;
     case "height":
       traitResult = searchForTrait(people, "height", searchTrait);
@@ -120,14 +123,13 @@ function searchByTrait(people, searchType) {
       traitResult = searchForTrait(people, "occupation", searchTrait);
       break;
     case "gender":
-      traitResult = searchForTrait(people, "gender", searchTrait);
+      traitResult = searchForTrait(traitResult, "gender", searchTrait);
       break;
     case "zodiac":
       traitResult = searchForTrait(people, "zodiac", searchTrait);
-        break;
-
-      
+        break;  
   }
+  //
   return traitResult;
   // searchForTrait(people, searchType, searchTrait)
 }
