@@ -105,9 +105,6 @@ function displayFamilyName(searchPerson, people) {
   });
 }
 
-//ONLY SEARCHING FIRST OBJECT (IF I SEARCH UMA BOB, FIND UMA BOB, THEN SEARCH DESCENDANT, IT ONLY LOOKS IN BILLY BOB, NO OTHER RECORDS)
-
-
 function displayDescendant(searchPerson, people = data[parents]) {
     let filterPeople = 
       people.filter(function (person) {
@@ -123,7 +120,6 @@ function displayDescendant(searchPerson, people = data[parents]) {
         });
   }
 
-//CAN NO LONGER SEARCH 1 TRAIT NOR SEARCH MORE THAN 2 COMBINED TRAITS
 
 // searching traits
 function searchForTrait(people, traitType, searchTrait) {
