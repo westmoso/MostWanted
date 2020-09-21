@@ -154,6 +154,31 @@ function searchByTrait(people, searchType) {
 
 }
 
+//received person defined error, alert displaying [object, object] but not data and cannot quit/close alert
+//can no longer search 1 trait and cannot search more than 2 traits combined
+// function displayDescendant(searchPerson, people = data) {
+//   let filteredPeople = people
+//     people.map(person => {
+//       if (
+//         person.parents[0] === searchPerson.id ||
+//         person.parents[1] === searchPerson.id
+//       ) {
+//         alert(filteredPeople);
+//         return displayDescendant(person.firstName, people), person.lastName);
+//       }
+//     })
+//     people.filter(person => person !== undefined)
+//     people.flat();
+
+//   return filteredPeople;
+// }    else {
+//         alert("No Descendant");
+//       app(people);
+//  }
+// });
+// }
+
+
 // alerts a list of people
 function displayPeople(people) {
   alert(
