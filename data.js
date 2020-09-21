@@ -13,7 +13,7 @@ const data = [
 	        "zodiac": "capricorn",
 	        "parents": [],
 	        "descendant": null,
-			"siblings": null,
+			"siblings": [],
 	        "currentSpouse": 401222887
 	    },
 	    {
@@ -28,7 +28,7 @@ const data = [
 	        "occupation": "assistant",
 	        "zodiac": "aries",
 	        "parents": [],
-			"siblings": null,
+			"siblings": [],
 	        "descendant": [878013758, 951747547],
 	        "currentSpouse": 272822514
 	    },
@@ -44,7 +44,7 @@ const data = [
 	        "occupation": "landscaper",
 	        "zodiac": "taurus",
 	        "parents": [],
-			"siblings": null,
+			"siblings": [],
 	        "descendant": 159819275,
 	        "currentSpouse": 260451248
 	    },
@@ -60,8 +60,8 @@ const data = [
 	        "occupation": "assistant",
 	        "zodiac": "virgo",
 	        "parents": [],
-			"siblings": null,
-	        "descendant": null,
+			"siblings":  [],
+	        "descendant":  [],
 	        "currentSpouse": 409574486
 	    },
 	    {
@@ -76,7 +76,7 @@ const data = [
 	        "occupation": "nurse",
 	        "zodiac": "aries",
 	        "parents": [],
-			"siblings": null,
+			"siblings":  [],
 	        "descendant": [348457184, 294874671, 931247228],
 	        "currentSpouse": 464142841
 	    },
@@ -92,7 +92,7 @@ const data = [
 	        "occupation": "student",
 	        "zodiac": "aries",
 	        "parents": [],
-			"siblings": null,
+			"siblings":  [],
 	        "descendant": [348457184, 294874671, 931247228],
 	        "currentSpouse": 629807187
 	    },
@@ -108,8 +108,8 @@ const data = [
 	        "occupation": "architect",
 	        "zodiac": "sagittarius",
 	        "parents": [],
-			"siblings": null,
-	        "descendant": null,
+			"siblings": [],
+	        "descendant": [],
 	        "currentSpouse": 595767575
 	    },
 	    {
@@ -124,8 +124,8 @@ const data = [
 	        "occupation": "architect",
 	        "zodiac": "scorpio",
 	        "parents": [],
-			"siblings": null,
-	        "descendant": null,
+			"siblings":  [],
+	        "descendant":  [],
 	        "currentSpouse": 982411429
 	    },
 	    {
@@ -140,7 +140,7 @@ const data = [
 	        "occupation": "doctor",
 	        "zodiac": "taurus",
 	        "parents": [],
-			"siblings": null,
+			"siblings":  [],
 	        "descendant": [822843554, 819168108, 969837479, 313207561],
 	        "currentSpouse": null
 	    },
@@ -156,7 +156,7 @@ const data = [
 	        "occupation": "landscaper",
 	        "zodiac": "taurus",
 	        "parents": [],
-			"siblings": null,
+			"siblings":  [],
 	        "descendant": [822843554, 819168108, 969837479, 313207561],
 	        "currentSpouse": null
 	    },
@@ -173,7 +173,7 @@ const data = [
 	        "zodiac": "aquarius",
 	        "parents": [401222887],
 			"siblings":  951747547,
-	        "descendant":  null,
+	        "descendant":   [],
 	        "currentSpouse": 294874671
 	    },
 	    {
@@ -189,7 +189,7 @@ const data = [
 	        "zodiac": "capricorn",
 	        "parents": [401222887],
 			"siblings":  878013758,
-	        "descendant":  null,
+	        "descendant":   [],
 	        "currentSpouse": 159819275
 	    },
 	    {
@@ -204,8 +204,8 @@ const data = [
 	        "occupation": "assistant",
 	        "zodiac": "sagittarius",
 	        "parents": [409574486, 260451248],
-			"siblings": null,
-	        "descendant":  null,
+			"siblings":  [],
+	        "descendant":   [],
 	        "currentSpouse": 951747547
 	    },
 	    {
@@ -221,7 +221,7 @@ const data = [
 	        "zodiac": "scorpio",
 	        "parents": [629807187, 464142841],
 			"siblings":  [294874671, 931247228],
-	        "descendant": null,
+	        "descendant":  [],
 	        "currentSpouse": null
 	    },
 	    {
@@ -237,7 +237,7 @@ const data = [
 	        "zodiac": "leo",
 	        "parents": [629807187, 464142841],
 			"siblings": [348457184, 931247228],
-	        "descendant":  null,
+	        "descendant":   [],
 	        "currentSpouse": 878013758
 	    },
 	    {
@@ -253,7 +253,7 @@ const data = [
 	        "zodiac": "pisces",
 	        "parents": [629807187, 464142841],
 			"siblings": [348457184, 294874671],
-	        "descendant": null,
+	        "descendant":  [],
 	        "currentSpouse": null
 	    },
 	    {
@@ -269,7 +269,7 @@ const data = [
 	        "zodiac": "leo",
 	        "parents": [693243224, 888201200],
 			"siblings": [819168108, 969837479, 313207561],
-	        "descendant": null,
+	        "descendant": [],
 	        "currentSpouse": null
 	    },
 	    {
@@ -285,7 +285,7 @@ const data = [
 	        "zodiac": "libra",
 	        "parents": [693243224, 888201200],
 			"siblings": [822843554, 969837479, 313207561],
-	        "descendant": null,
+	        "descendant": [],
 	        "currentSpouse": null
 	    },
 	    {
@@ -301,7 +301,7 @@ const data = [
 	        "zodiac": "sagittarius",
 	        "parents": [693243224, 888201200],
 			"siblings": [822843554, 819168108, 313207561],
-	        "descendant": null,
+	        "descendant": [],
 	        "currentSpouse": null
 	    },
 	    {
@@ -332,8 +332,8 @@ const data = [
 	        "occupation": "doctor",
 	        "zodiac": "pisces",
 	        "parents": [],
-			"siblings": null,
-	        "descendant":  null,
+			"siblings": [],
+	        "descendant": [],
 	        "currentSpouse": 313207561
 	    },
 	    {
@@ -348,8 +348,8 @@ const data = [
 	        "occupation": "doctor",
 	        "zodiac": "aquarius",
 	        "parents": [313207561, 313997561],
-			"siblings": null,
-	        "descendant": null,
+			"siblings": [],
+	        "descendant": [],
 	        "currentSpouse": null
 	    }
 	];

@@ -63,6 +63,7 @@ function mainMenu(person, people) {
       // TODO: get person's family
       break;
     case "descendants":
+      displayDescendant(people);
       // TODO: get person's descendants
       break;
     case "restart":
@@ -102,6 +103,25 @@ function displayFamilyName(people) {
       app(people);
     }
   });
+}
+
+//received person defined error, alert displaying [object, object] but not data and cannot quit/close alert
+//can no longer search 1 trait and cannot search more than 2 traits combined
+function displayDescendant(searchPerson, people = data) {
+  let filterPeople = 
+    person.filter((person) => {
+        if (person.descendant[0] === searchPerson.id ||
+          person.descendant[1] === searchPerson.id) {
+          alert(filterPeople);
+          return (displayDescendant(person, people), person);
+        }
+        else {
+          alert("No Descendant");
+          app(people);
+        }
+        person.filter(person => person !== undefined);
+        person.flat();
+      });
 }
 
 // searching traits
@@ -154,31 +174,6 @@ function searchByTrait(people, searchType) {
 
 }
 
-//received person defined error, alert displaying [object, object] but not data and cannot quit/close alert
-//can no longer search 1 trait and cannot search more than 2 traits combined
-// function displayDescendant(searchPerson, people = data) {
-//   let filteredPeople = people
-//     people.map(person => {
-//       if (
-//         person.parents[0] === searchPerson.id ||
-//         person.parents[1] === searchPerson.id
-//       ) {
-//         alert(filteredPeople);
-//         return displayDescendant(person.firstName, people), person.lastName);
-//       }
-//     })
-//     people.filter(person => person !== undefined)
-//     people.flat();
-
-//   return filteredPeople;
-// }    else {
-//         alert("No Descendant");
-//       app(people);
-//  }
-// });
-// }
-
-
 // alerts a list of people
 function displayPeople(people) {
   alert(
@@ -199,6 +194,8 @@ function displayPerson(person) {
   personInfo += "Eye Color:" + person.eyeColor + "\n";
   personInfo += "Occupation:" + person.occupation + "\n";
   personInfo += "Parents:" + person.parents + "\n";
+  personInfo += "Descendant:" + person.descendant + "\n";
+  personInfo += "Siblings:" + person.siblings + "\n";
   personInfo += "Spouse:" + person.currentSpouse + "\n";
   personInfo += "Zodiac:" + person.zodiac + "\n";
 
