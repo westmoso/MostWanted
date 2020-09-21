@@ -12,7 +12,7 @@ function app(people) {
     case "yes":
       searchResults = searchByName(people);
       break;
-    case "no": searchingForTrait();
+    case "no":
       searchResults = searchByTrait(people, searchType); //want to enter multiple traits at this point
       // TODO: search by traits
       break;
@@ -35,10 +35,6 @@ function app(people) {
 
 }
 
-function searchingForTrait() {
-
-
-}
 
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people) {
@@ -84,7 +80,7 @@ function searchByName(people) {
   let lastName = promptFor("What is the person's last name?", chars);
 
   let foundPerson = people.filter(function (person) {
-    if (person.firstName === firstName && person.lastName === lastName) {
+    if (person.firstName.toLowerCase() === firstName && person.lastName.toLowerCase() === lastName) {
       return true;
     } else {
       return false;
@@ -94,6 +90,21 @@ function searchByName(people) {
   return foundPerson;
 }
 
+function displayFamilyName(people) {
+  let lastName = promptFor("Confirm family last name?", chars);
+
+  let familyNameResult = people.filter(function (person) {
+    if (person.lastName == lastName) {
+      alert(familyNameResult);
+    }
+    else {
+      alert("There is no other family with that last name. Application will not restart.")
+      app(people);
+    }
+  });
+}
+
+// searching traits
 function searchForTrait(people, traitType, searchTrait) {
 
   let searchResults = people.filter(function (el) {
@@ -107,12 +118,12 @@ function searchForTrait(people, traitType, searchTrait) {
   return searchResults;
 }
 
+// searching within multiple traits
 function searchByTrait(people, searchType) {
   let traitResult = people;
-  let i = 1
-  // loop
+  let i = 1;
 
-  while (i < traitResult.length) {
+  while (i <= traitResult.length) {
     i++;
     let searchType = promptFor("Let's narrow the person you are looking for by their traits: 'eye color', 'height', 'weight', 'gender', 'occupation', 'dob', 'zodiac'", typeValidation).toLowerCase();
     let searchTrait = promptFor("What is the " + searchType + " you are looking for? ", chars).toLowerCase();
@@ -138,12 +149,10 @@ function searchByTrait(people, searchType) {
         break;
     }
   }
-  //
+
   return traitResult;
-  // searchForTrait(people, searchType, searchTrait)
+
 }
-
-
 
 // alerts a list of people
 function displayPeople(people) {
@@ -169,15 +178,6 @@ function displayPerson(person) {
   personInfo += "Zodiac:" + person.zodiac + "\n";
 
   alert(personInfo);
-}
-
-
-
-function displayFamilyName(people) {
-
-  let personFamilyName = "Last Name: " + person.lastName;
-
-  alert(personFamilyName);
 }
 
 // function that prompts and validates user input
