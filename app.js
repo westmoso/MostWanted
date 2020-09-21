@@ -91,11 +91,11 @@ function searchByName(people) {
   return foundPerson;
 }
 
-function displayFamilyName(people) {
+function displayFamilyName(searchPerson, people) {
   let lastName = promptFor("Confirm family last name?", chars);
 
   let familyNameResult = people.filter(function (person) {
-    if (person.lastName == lastName) {
+    if (person.lastName == lastName && person.parents === searchPerson.id) {
       alert(familyNameResult);
     }
     else {
@@ -107,21 +107,21 @@ function displayFamilyName(people) {
 
 //ONLY SEARCHING FIRST OBJECT (IF I SEARCH UMA BOB, FIND UMA BOB, THEN SEARCH DESCENDANT, IT ONLY LOOKS IN BILLY BOB, NO OTHER RECORDS)
 
-function displayDescendant(searchPerson, people = data) {
-  let filterPeople = 
-    people.filter((person) => {
-        if (person.parents[0] === searchPerson || person.parents[1] === searchPerson) {
-            alert(filterPeople);
-          return (displayDescendant(person, people), person);          
-        }
-        else {
-          alert("No Descendant");
-          app(people);
-        }
-        //person.filter(person => person !== undefined);
-        //person.flat();
-      });
-}
+
+function displayDescendant(searchPerson, people = data[parents]) {
+    let filterPeople = 
+      people.filter(function (person) {
+          if (searchPerson.parents[0] === searchPerson.id || searchPerson.parents[1] === searchPerson.id) {
+              alert(filterPeople);
+            return (displayDescendant(person, people), person);          
+          }
+          else {
+            alert("No Descendant");
+            app(people);
+          }
+          person.filter(person => person !== undefined);
+        });
+  }
 
 //CAN NO LONGER SEARCH 1 TRAIT NOR SEARCH MORE THAN 2 COMBINED TRAITS
 
@@ -165,9 +165,6 @@ function searchByTrait(people, searchType) {
       case "gender":
         traitResult = searchForTrait(traitResult, "gender", searchTrait);
         break;
-      case "zodiac":
-        traitResult = searchForTrait(traitResult, "zodiac", searchTrait);
-        break;
     }
   }
 
@@ -195,10 +192,7 @@ function displayPerson(person) {
   personInfo += "Eye Color:" + person.eyeColor + "\n";
   personInfo += "Occupation:" + person.occupation + "\n";
   personInfo += "Parents:" + person.parents + "\n";
-  personInfo += "Descendant:" + person.descendant + "\n";
-  personInfo += "Siblings:" + person.siblings + "\n";
   personInfo += "Spouse:" + person.currentSpouse + "\n";
-  personInfo += "Zodiac:" + person.zodiac + "\n";
 
   alert(personInfo);
 }
@@ -218,7 +212,7 @@ function yesNo(input) {
 
 // trait validation function
 function typeValidation(input) {
-  return input.toLowerCase() == "eye color" || input.toLowerCase() === "height" || input.toLowerCase() == "weight" || input.toLowerCase() === "dob" || input.toLowerCase() === "occupation" || input.toLowerCase() === 'gender' || input.toLowerCase() === 'zodiac';
+  return input.toLowerCase() == "eye color" || input.toLowerCase() === "height" || input.toLowerCase() == "weight" || input.toLowerCase() === "dob" || input.toLowerCase() === "occupation" || input.toLowerCase() === "gender";
 }
 
 // helper function to pass in as default promptFor validation
