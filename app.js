@@ -59,11 +59,11 @@ function mainMenu(person, people) {
       // TODO: get person's info
       break;
     case "family":
-      displayFamilyName(people);
+      displayFamilyName(person, people);
       // TODO: get person's family
       break;
     case "descendants":
-      displayDescendant(people);
+      displayDescendant(person, people);
       // TODO: get person's descendants
       break;
     case "restart":
@@ -105,24 +105,25 @@ function displayFamilyName(people) {
   });
 }
 
-//received person defined error, alert displaying [object, object] but not data and cannot quit/close alert
-//can no longer search 1 trait and cannot search more than 2 traits combined
+//ONLY SEARCHING FIRST OBJECT (IF I SEARCH UMA BOB, FIND UMA BOB, THEN SEARCH DESCENDANT, IT ONLY LOOKS IN BILLY BOB, NO OTHER RECORDS)
+
 function displayDescendant(searchPerson, people = data) {
   let filterPeople = 
-    person.filter((person) => {
-        if (person.descendant[0] === searchPerson.id ||
-          person.descendant[1] === searchPerson.id) {
-          alert(filterPeople);
-          return (displayDescendant(person, people), person);
+    people.filter((person) => {
+        if (person.parents[0] === searchPerson || person.parents[1] === searchPerson) {
+            alert(filterPeople);
+          return (displayDescendant(person, people), person);          
         }
         else {
           alert("No Descendant");
           app(people);
         }
-        person.filter(person => person !== undefined);
-        person.flat();
+        //person.filter(person => person !== undefined);
+        //person.flat();
       });
 }
+
+//CAN NO LONGER SEARCH 1 TRAIT NOR SEARCH MORE THAN 2 COMBINED TRAITS
 
 // searching traits
 function searchForTrait(people, traitType, searchTrait) {
